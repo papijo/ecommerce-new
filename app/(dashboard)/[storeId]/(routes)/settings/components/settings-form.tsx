@@ -53,6 +53,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
+      window.location.reload();
       toast.success("Store Updated");
     } catch (error) {
       console.log(error);
@@ -64,9 +65,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
     try {
       setLoading(true);
       await axios.delete(`/api/stores/${params.storeId}`);
-      router.push("/");
       router.refresh();
-      // window.location.reload(); //use when router.refresh isnt working
+      router.push(`/${params.storeId}/billboards`);
+      window.location.reload(); //use when router.refresh isnt working
 
       toast.success("Store Deleted");
     } catch (error) {

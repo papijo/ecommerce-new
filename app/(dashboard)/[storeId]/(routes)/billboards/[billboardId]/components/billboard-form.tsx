@@ -71,6 +71,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
       }
       router.refresh();
       router.push(`/${params.storeId}/billboards`);
+      window.location.reload();
       toast.success(toastMessage);
     } catch (error) {
       console.log(error);
@@ -85,7 +86,8 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
       router.refresh();
-      router.push("/");
+      router.push(`/${params.storeId}/billboards`);
+      window.location.reload();
       toast.success("Billboard Deleted");
     } catch (error) {
       console.log(error);
